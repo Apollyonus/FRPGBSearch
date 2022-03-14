@@ -1,0 +1,110 @@
+from dataclasses import InitVar
+import tkinter as tk
+from tkinter import ANCHOR, Button, Entry, IntVar, Label, OptionMenu, StringVar, Variable, filedialog, Text
+import os
+from tkinter.tix import COLUMN
+from textwrap import wrap
+
+from turtle import width
+from webbrowser import get
+from itertools import product
+from msilib.schema import RadioButton
+from ssl import Options
+
+
+root = tk.Tk()
+root.title('Fallout RPG Search Engine')
+root.iconbitmap('icon.ico')
+root.geometry('550x500')
+welcome = Label(root, text ="Welcome to the Fallout RPG Search Engine, please, apply your character skills below",wraplength=100).grid(row=1,column=2)
+
+def open():
+    lelabel = Label(root,text = clicked.get()).grid(row=2,column=6,padx=10,pady=10)
+
+option = [
+    '',
+    'Agility',
+    'Barbarian',
+    'Lockpick',
+    'Sneak',
+    'Lucky Bastard',
+]
+
+clicked = StringVar()
+clicked.set(option[0])
+
+drop = OptionMenu(root,clicked,*option).grid(row=2,column=4,padx=10,pady=10)
+
+skills = Button(root, text='SUBMIT', command=open).grid(row=2,column=5,padx=10,pady=10)
+
+
+
+STRLvl = IntVar()
+PERLvl = IntVar()
+ENDLvl = IntVar()
+CHALvl = IntVar()
+INTLvl = IntVar()
+LUKLvl = IntVar()
+
+LVLe = Entry(root, width=15, textvariable=STRLvl)
+LVLe.grid(row=2,column=2)
+def LVLval():
+    LVLvallabel = Label(root, text = 'Character Level: ' + LVLe.get())
+    LVLvallabel.grid(row=2,column=3)
+STRe = Entry(root, width=15)
+STRe.grid(row=3,column=2)
+def STRval():
+    STRvallabel = Label(root, text = 'STR Lvl: ' + STRe.get())
+    STRvallabel.grid(row=3,column=3)
+PERe = Entry(root,width=15)
+PERe.grid(row=4,column=2)
+def PERval():
+    PERvallabel = Label(root, text = 'PER Lvl: ' + PERe.get())
+    PERvallabel.grid(row=4,column=3)
+ENDe = Entry(root,width=15)
+ENDe.grid(row=5,column=2)
+def ENDval():
+    ENDvallabel = Label(root, text = 'END Lvl: ' + ENDe.get())
+    ENDvallabel.grid(row=5,column=3)
+CHAe = Entry(root,width=15)
+CHAe.grid(row=6,column=2)
+def CHAval():
+    CHAvallabel = Label(root, text = 'CHA Lvl: ' + CHAe.get())
+    CHAvallabel.grid(row=6,column=3)
+INTe = Entry(root,width=15)
+INTe.grid(row=7,column=2)
+def INTval():
+    INTvallabel = Label(root, text = 'INT Lvl: ' + INTe.get())
+    INTvallabel.grid(row=7,column=3)
+LUKe = Entry(root,width=15)
+LUKe.grid(row=8,column=2)
+def LUKval():
+    LUKvallabel = Label(root, text = 'LUK Lvl: ' + LUKe.get())
+    LUKvallabel.grid(row=8,column=3)
+
+
+
+    
+
+
+LVLbutton = Button(root, text="Character Level?",command = LVLval).grid(row=2,column=1)
+STRbutton = Button(root, text="STR Level?",command = STRval).grid(row=3,column=1)
+PERbutton = Button(root, text="PER Level?",command = PERval).grid(row=4,column=1)
+ENDbutton = Button(root, text="END Level?",command = ENDval).grid(row=5,column=1)
+CHAbutton = Button(root, text="CHA Level?",command = CHAval).grid(row=6,column=1)
+INTbutton = Button(root, text="INT Level?",command = INTval).grid(row=7,column=1)
+LUKbutton = Button(root, text="LUK Level?",command = LUKval).grid(row=8,column=1)
+def AddSPECIALnumbers():
+    CharacterLvl = LVLe.get,
+ 
+Apply_Stats = Button(root, text='Apply SPECIAL',command = AddSPECIALnumbers).grid(row=9,column=1)
+
+
+
+
+def getskill():
+    if int(STRLvl) >= 1:
+        Barbarian1label = Label(root, text='Barbarian 1: Penis Spaghetti').grid(row=10,column=1)
+CheckSkills = Button(root, text="Check for skills",command = getskill).grid(row=10,column=1)
+
+root.mainloop()
